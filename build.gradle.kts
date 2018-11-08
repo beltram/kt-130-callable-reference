@@ -39,7 +39,6 @@ dependencyManagement {
 dependencies {
     val kotlinVersion = "1.3.0"
     compile("org.springframework.boot:spring-boot-starter-webflux")
-    compile("org.slf4j:slf4j-api")
     implementation(kotlin("stdlib", kotlinVersion))
     implementation(kotlin("stdlib-jdk7", kotlinVersion))
     implementation(kotlin("stdlib-jdk8", kotlinVersion))
