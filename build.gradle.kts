@@ -15,12 +15,14 @@ buildscript {
 }
 
 plugins {
+    // works with prior kt version
+    // val kotlinVersion = "1.2.71"
     val kotlinVersion = "1.3.0"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
 
     // this works
-    // id("org.springframework.boot") version "2.1.0.RELEASE"
+//     id("org.springframework.boot") version "2.1.0.RELEASE"
 
     id("org.springframework.boot") version "2.1.0.RELEASE" apply false
     id("io.spring.dependency-management") version "1.0.6.RELEASE"
@@ -37,8 +39,12 @@ apply {
 
 // this fails
 the<DependencyManagementExtension>().apply {
-    imports { mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES) }
+    imports {
+        mavenBom("org.springframework.boot:spring-boot-dependencies:2.1.0.RELEASE")
+    }
 }
+repositories { mavenCentral() }
+
 // fails also
 //dependencyManagement {
 //    imports {
@@ -50,6 +56,8 @@ the<DependencyManagementExtension>().apply {
 //}
 
 dependencies {
+    // works with prior kt version
+    // val kotlinVersion = "1.2.71"
     val kotlinVersion = "1.3.0"
     compile("org.springframework.boot:spring-boot-starter-webflux")
     implementation(kotlin("stdlib", kotlinVersion))
